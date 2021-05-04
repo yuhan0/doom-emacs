@@ -192,7 +192,8 @@ PLIST can have the following properties:
   ;; Ensure point is always on a button
   (add-hook 'post-command-hook #'+doom-dashboard-reposition-point-h nil 'local)
   ;; Never show hl-line, because the margin cut-off looks ugly!
-  (face-remap-add-relative 'hl-line '(:background nil)))
+  (when (bound-and-true-p hl-line-mode)
+    (hl-line-mode -1)))
 
 (define-key! +doom-dashboard-mode-map
   [left-margin mouse-1]   #'ignore
